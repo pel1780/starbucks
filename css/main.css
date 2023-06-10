@@ -3,6 +3,7 @@
 body {
   font-family: "Nanum Gothic", sans-serif;
   color: #343434;
+  height: 300vh;
 }
 
 * {
@@ -10,6 +11,7 @@ body {
   font-weight: inherit;
   color: inherit;
   text-decoration: none;
+  box-sizing: border-box;
 }
 
 .sec {
@@ -29,18 +31,85 @@ img {
   display: block;
 }
 
-/* header */
-header {
-  background: #f6f5f0;
-  border-bottom: 1px solid #c8c8c8;
+.btn {
+  width: 130px;
+  padding: 15px;
+  border: 2px solid #333;
+  border-radius: 4px;
+  color: #333;
+  font-size: 16px;
+  font-weight: 700;
+  text-align: center;
+  cursor: pointer;
+  display: block;
+  transition: 0.4s;
 }
 
-header .inner {
+.btn:hover {
+  background: #333;
+  color: #fff;
+}
+
+.btn.btn--reverse {
+  background: #333;
+  color: #fff;
+}
+
+.btn.btn--reverse:hover {
+  background: transparent;
+  color: #fff;
+}
+
+.btn.btn--brown {
+  color: #592b18;
+  border-color: #592b18;
+}
+
+.btn.btn--brown:hover {
+  color: #fff;
+  background-color: #592b18;
+}
+
+.btn.btn--gold {
+  color: #d9aa8a;
+  border-color: #d9aa8a;
+}
+
+.btn.btn--gold:hover {
+  color: #fff;
+  background-color: #d9aa8a;
+}
+
+.btn.btn--white {
+  color: #fff;
+  border-color: #fff;
+}
+
+.btn.btn--white:hover {
+  color: #333;
+  background-color: #fff;
+}
+
+/* header */
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  background: #f6f5f0;
+  border-bottom: 1px solid #c8c8c8;
+  z-index: 9;
+}
+
+header > .inner {
   height: 100px;
   align-items: center;
   justify-content: space-between;
 }
-
+header .sub_menu {
+  justify-content: flex-end;
+  margin: 10px 0;
+}
 header .sub_menu ul li ~ li::before {
   content: "";
   display: inline-block;
@@ -51,6 +120,7 @@ header .sub_menu ul li ~ li::before {
 header .sub_menu ul li a {
   display: inline-block;
   font-size: 12px;
+  font-family: Arial, sans-serif;
   padding: 11px 16px;
 }
 
@@ -64,7 +134,7 @@ header .sub_menu .search {
 
 header .sub_menu .search input {
   width: 34px;
-  height: 36px;
+  height: 34px;
   padding: 4px 10px;
   border: 1px solid #ccc;
   box-sizing: border-box;
@@ -93,4 +163,226 @@ header .sub_menu .search .material-icons {
 
 header .sub_menu .search.focused .material-icons {
   opacity: 0;
+}
+
+header .main_menu > ul {
+  justify-content: flex-end;
+}
+
+header .main_menu .item .item__name {
+  padding: 12px 16px 20px 16px;
+  font-family: Arial, sans-serif;
+  font-size: 13px;
+}
+
+header .main_menu .item:hover .item__name {
+  background: #2c2a29;
+  color: #669900;
+  border-radius: 6px 6px 0 0;
+}
+
+header .main_menu .item .item__contents {
+  position: fixed;
+  left: 0;
+  right: 0;
+  display: none;
+  z-index: 9;
+}
+
+header .main_menu .item:hover .item__contents {
+  display: block;
+}
+
+header .main_menu .item .item__contents .contents__menu {
+  background: #2c2a29;
+  color: #999;
+}
+
+header .main_menu .item .item__contents .contents__menu > ul {
+  padding: 20px 0;
+  gap: 100px;
+  line-height: 2;
+  font-size: 12px;
+}
+
+header .main_menu .item .item__contents .contents__menu dt {
+  font-size: 14px;
+  color: #fff;
+  margin-bottom: 10px;
+}
+
+header .main_menu .item .item__contents .contents__menu dd a {
+  display: block;
+}
+
+header .main_menu .item .item__contents .contents__menu dd:hover {
+  color: #669900;
+}
+
+header .main_menu .item .item__contents .contents__texture {
+  background: url(../images/main_menu_pattern.jpg) no-repeat center center/cover;
+  padding: 20px 0;
+  font-size: 12px;
+  line-height: 1.4;
+}
+
+header .main_menu .item .item__contents .contents__texture strong {
+  color: #999;
+  font-weight: 700;
+}
+header .main_menu .item .item__contents .contents__texture p {
+  color: #669900;
+  margin-bottom: 10px;
+}
+
+header .main_menu .item .item__contents .contents__texture p:last-of-type {
+  margin: 0;
+}
+
+header .badges {
+  position: absolute;
+  top: 112px;
+  right: 12px;
+}
+
+header .badges .badge {
+  border-radius: 5px;
+  overflow: hidden;
+  margin-bottom: 12px;
+  box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+}
+
+/* visual */
+.mainVisual {
+  margin-top: 101px;
+  background: url(../images/visual_bg.jpg) no-repeat center center/cover;
+}
+
+.mainVisual .inner {
+  position: relative;
+  height: 650px;
+}
+
+.mainVisual h2 {
+  position: absolute;
+  top: 88px;
+  left: -10px;
+}
+.mainVisual h2 a {
+  margin: 30px auto 0 auto;
+}
+
+.mainVisual .cup1.image {
+  position: absolute;
+  bottom: 0;
+  right: -47px;
+}
+
+.mainVisual .cup1.text {
+  position: absolute;
+  top: 38px;
+  right: 171px;
+}
+
+.mainVisual .cup2.image {
+  position: absolute;
+  bottom: 0;
+  right: 162px;
+}
+
+.mainVisual .cup2.text {
+  position: absolute;
+  top: 321px;
+  right: 416px;
+}
+.mainVisual .spoon {
+  position: absolute;
+  bottom: 0;
+  left: 275px;
+}
+
+.mainVisual .fade_in {
+  opacity: 0;
+}
+
+/* notice */
+.mainNotice {
+}
+
+.mainNotice .notice_line {
+  position: relative;
+}
+
+.mainNotice .notice_line .bg_left {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 50%;
+  height: 100%;
+  background: #333;
+}
+
+.mainNotice .notice_line .bg_right {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 50%;
+  height: 100%;
+  background: #f6f5f0;
+}
+
+.mainNotice .notice_line .inner {
+  position: relative;
+  height: 70px;
+}
+
+.mainNotice .notice_line .inner .inner__left {
+  width: 60%;
+  height: 100%;
+  background: #333;
+  color: #fff;
+  align-items: center;
+  padding: 0 20px;
+}
+
+.mainNotice .notice_line .inner .inner__left h2 {
+  font-size: 17px;
+  font-weight: 700;
+  margin-right: 20px;
+}
+
+.mainNotice .notice_line .inner .inner__left .swiper-container {
+  flex-grow: 1;
+  height: 100%;
+}
+
+.mainNotice .notice_line .inner .inner__left .swiper-slide {
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+.mainNotice .notice_line .inner .inner__left .swiper-slide a {
+  display: block;
+}
+
+.mainNotice .notice_line .inner .inner__left .notice_line__more {
+  font-size: 30px;
+}
+.mainNotice .notice_line .inner .inner__right {
+  width: 40%;
+  height: 100%;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.mainNotice .notice_line .inner .inner__right h2 {
+  font-size: 17px;
+  font-weight: 700;
+}
+
+.mainNotice .notice_line .inner .inner__right .toggle_promotion {
+  font-size: 30px;
+  cursor: pointer;
+  padding: 10px;
 }
