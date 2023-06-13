@@ -3,7 +3,8 @@
 body {
   font-family: "Nanum Gothic", sans-serif;
   color: #343434;
-  height: 300vh;
+  background: #f6f5f0;
+  height: 200vh;
 }
 
 * {
@@ -307,9 +308,6 @@ header .badges .badge {
 }
 
 /* notice */
-.mainNotice {
-}
-
 .mainNotice .notice_line {
   position: relative;
 }
@@ -385,4 +383,87 @@ header .badges .badge {
   font-size: 30px;
   cursor: pointer;
   padding: 10px;
+}
+
+.mainNotice .promotion {
+  padding: 50px 0;
+  height: 709px;
+  transition: 0.5s;
+  overflow: hidden;
+}
+
+.mainNotice .promotion .swiper-container {
+  width: calc(820px * 3 + 60px);
+  margin-left: -310px;
+}
+
+.mainNotice .promotion .swiper-container .swiper-slide {
+  position: relative;
+  filter: opacity(0.5);
+  transition: 0.5s;
+}
+
+.mainNotice .promotion .swiper-container .swiper-slide.swiper-slide-active {
+  filter: opacity(1);
+}
+
+.mainNotice .promotion .swiper-container .swiper-slide .btn {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translate(-50%, 0);
+}
+
+.mainNotice .promotion .swiper-pagination {
+  position: static;
+  margin-top: 40px;
+}
+
+.mainNotice .promotion .swiper-pagination .swiper-pagination-bullet {
+  background-image: url("../images/promotion_slide_pager.png");
+  width: 12px;
+  height: 12px;
+  background-color: transparent;
+  outline: none;
+}
+
+.mainNotice .promotion .swiper-pagination .swiper-pagination-bullet-active {
+  background-image: url("../images/promotion_slide_pager_on.png");
+}
+
+.mainNotice .promotion .swiper-prev,
+.mainNotice .promotion .swiper-next {
+  position: absolute;
+  z-index: 9;
+  top: 50%;
+  width: 42px;
+  height: 42px;
+  border: 2px solid #333;
+  border-radius: 50%;
+  cursor: pointer;
+  outline: none;
+  text-align: center;
+  padding: 6px 0;
+  transition: 0.4s;
+}
+
+.mainNotice .promotion .swiper-prev {
+  left: 50%;
+  transform: translate(-500px, -50%);
+}
+
+.mainNotice .promotion .swiper-next {
+  right: 50%;
+  transform: translate(500px, -50%);
+}
+
+.mainNotice .promotion .swiper-prev:hover,
+.mainNotice .promotion .swiper-next:hover {
+  background: #333;
+  color: #fff;
+}
+
+.mainNotice .promotion.hide {
+  height: 0;
+  padding: 0;
 }

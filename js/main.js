@@ -45,8 +45,43 @@ fadeEls.forEach(function (fadeEl, index) {
   });
 });
 
-new Swiper(".notice_line .swiper-container", {
+new Swiper(".mainNotice .notice_line .swiper-container", {
   direction: "vertical",
   autoplay: true,
   loop: true,
+});
+
+new Swiper(".mainNotice .promotion .swiper-container", {
+  autoplay: {
+    delay: 5000,
+  },
+  loop: true,
+  centeredSlides: true,
+  slidesPerView: 3,
+  spaceBetween: 30,
+  pagination: {
+    el: ".promotion .swiper-pagination",
+    clickable: true,
+  },
+  navigation: {
+    prevEl: ".promotion .swiper-prev",
+    nextEl: ".promotion .swiper-next",
+  },
+});
+
+const promotionEl = document.querySelector(".promotion");
+const promotionToggleBtn = document.querySelector(
+  ".mainNotice .toggle_promotion"
+);
+
+let isHidePromotion = false;
+
+promotionToggleBtn.addEventListener("click", function () {
+  isHidePromotion = !isHidePromotion;
+
+  if (isHidePromotion) {
+    promotionEl.classList.add("hide");
+  } else {
+    promotionEl.classList.remove("hide");
+  }
 });
