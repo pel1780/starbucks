@@ -69,6 +69,17 @@ new Swiper(".mainNotice .promotion .swiper-container", {
   },
 });
 
+new Swiper("footer .awards .swiper-container", {
+  autoplay: true,
+  loop: true,
+  spaceBetween: 30,
+  slidesPerView: 5,
+  navigation: {
+    prevEl: "footer .awards .swiper-prev",
+    nextEl: "footer .awards .swiper-next",
+  },
+});
+
 const promotionEl = document.querySelector(".promotion");
 const promotionToggleBtn = document.querySelector(
   ".mainNotice .toggle_promotion"
@@ -85,3 +96,36 @@ promotionToggleBtn.addEventListener("click", function () {
     promotionEl.classList.remove("hide");
   }
 });
+
+// 범위 랜덤 함수(소수점 2자리까지)
+function random(min, max) {
+  // `.toFixed()`를 통해 반환된 문자 데이터를,
+  // `parseFloat()`을 통해 소수점을 가지는 숫자 데이터로 변환
+  return parseFloat((Math.random() * (max - min) + min).toFixed(2));
+}
+function floatingObject(selector, delay, size) {
+  gsap.to(selector, random(1.5, 2.5), {
+    y: size,
+    repeat: -1,
+    yoyo: true,
+    ease: Power1.easeInOut,
+    delay: random(0, delay), //지연시키는
+  });
+}
+
+floatingObject(".floating1", 1, 15);
+floatingObject(".floating2", 0.5, 15);
+floatingObject(".floating3", 1.5, 20);
+
+const spyEls = document.querySelectorAll("section.scroll_spy");
+spyEls.forEach(function (spyEl) {
+  new ScrollMagic.Scene({
+    triggerElement: spyEl, //보여짐 여부를 감시할 요소를 지정
+    triggerHook: 0.8,
+  })
+    .setClassToggle(spyEl, "show")
+    .addTo(new ScrollMagic.Controller());
+});
+
+const thisYear = document.querySelector(".this_year");
+thisYear.textContent = new Date().getFullYear();
