@@ -1,40 +1,46 @@
-const searchEl = document.querySelector(".search");
-const searchInputEl = searchEl.querySelector("input");
-
-searchEl.addEventListener("click", function () {
-  searchInputEl.focus();
-});
-
-searchInputEl.addEventListener("focus", function () {
-  searchEl.classList.add("focused");
-  searchInputEl.setAttribute("placeHolder", "통합검색");
-});
-
-searchInputEl.addEventListener("blur", function () {
-  searchEl.classList.remove("focused");
-  searchInputEl.setAttribute("placeHolder", "");
-});
-
 const badgeEl = document.querySelector("header .badges");
+const toTopEl = document.querySelector("#to_top");
 
 window.addEventListener(
   "scroll",
   _.throttle(function () {
+    // _.throttle(함수, 시간)
     if (window.scrollY > 300) {
       // gsap.to(요소, 지속시간, 옵션)
       gsap.to(badgeEl, 0.6, {
+        // 뱃지 숨기기
         opacity: 0,
         display: "none",
       });
+
+      // totop 보이기
+      gsap.to(toTopEl, 0.2, {
+        x: 0,
+        opacity: 1,
+        display: "flex",
+      });
     } else {
       gsap.to(badgeEl, 0.6, {
+        // 뱃지 보이기
         opacity: 1,
         display: "block",
+      });
+
+      // totop 숨기기
+      gsap.to(toTopEl, 0.2, {
+        x: 100,
+        opacity: 0,
+        display: "none",
       });
     }
   }, 300)
 );
-// _.throttle(함수, 시간)
+
+toTopEl.addEventListener("click", function () {
+  gsap.to(window, 1, {
+    scrollTo: 0,
+  });
+});
 
 const fadeEls = document.querySelectorAll(".mainVisual .fade_in");
 
@@ -126,6 +132,3 @@ spyEls.forEach(function (spyEl) {
     .setClassToggle(spyEl, "show")
     .addTo(new ScrollMagic.Controller());
 });
-
-const thisYear = document.querySelector(".this_year");
-thisYear.textContent = new Date().getFullYear();
